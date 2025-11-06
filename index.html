@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceptable Use Policy (AUP) Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        fieldset {
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        legend {
+            font-size: 1.125rem;
+            font-weight: 600;
+            padding: 0 0.5rem;
+        }
+        label {
+            font-weight: 500;
+        }
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            border-radius: 0.375rem;
+            border: 1px solid #cbd5e1;
+            padding: 0.5rem 0.75rem;
+            margin-top: 0.25rem;
+        }
+        input[type="checkbox"] {
+            border-radius: 0.25rem;
+            border: 1px solid #cbd5e1;
+        }
+        #output-container {
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            background: #f8fafc;
+        }
+        #output {
+            padding: 1.5rem;
+            min-height: 150px;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+        }
+        .note {
+            font-size: 0.875rem;
+            color: #475569;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 p-4 md:p-8">
+    <main class="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-lg shadow-md">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">Acceptable Use Policy (AUP) Generator</h1>
+        <p class="text-center text-gray-600 mb-8">Fill in the form to generate a basic AUP for your website or online service.</p>
+
+        <form id="aup-form" class="space-y-4">
+
+            <!-- 1. Introduction & Company -->
+            <fieldset>
+                <legend>1. Introduction & Company</legend>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="company-name">Company Name:</label>
+                        <input type="text" id="company-name" placeholder="e.g., Coqui Cloud LLC">
+                    </div>
+                    <div>
+                        <label for="website-name">Website/Service Name:</label>
+                        <input type="text" id="website-name" placeholder="e.g., Coqui Cloud Forums">
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <label for="website-url">Website URL:</label>
+                    <input type="text" id="website-url" placeholder="https://www.coqui.cloud">
+                </div>
+            </fieldset>
+
+            <!-- 2. Prohibited Activities -->
+            <fieldset>
+                <legend>2. Prohibited Activities</legend>
+                <p class="mb-3">Select common activities that users are NOT allowed to do.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="act-illegal" class="mr-2" checked>
+                        <label for="act-illegal">Illegal Activities</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="act-spam" class="mr-2" checked>
+                        <label for="act-spam">Spamming or Unsolicited Mail</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="act-harassment" class="mr-2" checked>
+                        <label for="act-harassment">Harassment or Bullying</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="act-hate" class="mr-2" checked>
+                        <label for="act-hate">Hate Speech or Discrimination</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="act-impersonation" class="mr-2" checked>
+                        <label for="act-impersonation">Impersonation of others</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="act-malware" class="mr-2" checked>
+                        <label for="act-malware">Distributing Malware/Viruses</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="act-copyright" class="mr-2" checked>
+                        <label for="act-copyright">Copyright/Trademark Infringement</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="act-reverse" class="mr-2" checked>
+                        <label for="act-reverse">Reverse Engineering the Service</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="act-security" class="mr-2" checked>
+                        <label for="act-security">Hacking or Bypassing Security</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="act-datamining" class="mr-2" checked>
+                        <label for="act-datamining">Data Mining or Scraping (without permission)</label>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <label for="other-prohibitions">Other Prohibited Activities (one per line):</label>
+                    <textarea id="other-prohibitions" rows="3" placeholder="e.g., Posting obscene content&#10;Sharing private information of others"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- 3. User-Generated Content -->
+            <fieldset>
+                <legend>3. User-Generated Content</legend>
+                <div class="flex items-center">
+                    <input type="checkbox" id="user-content" class="mr-2">
+                    <label for="user-content">My service allows users to post content (comments, images, etc.)</label>
+                </div>
+                <p class="note mt-2">If checked, this adds a clause stating that you have the right to monitor, remove, and use the content they post.</p>
+            </fieldset>
+
+            <!-- 4. Enforcement & Termination -->
+            <fieldset>
+                <legend>4. Enforcement & Termination</legend>
+                <p class="mb-3">What actions can you take if a user violates this policy?</p>
+                <div class="space-y-2">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="en-warning" class="mr-2" checked>
+                        <label for="en-warning">Issue a warning</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="en-remove" class="mr-2" checked>
+                        <label for="en-remove">Remove the offending content</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="en-suspend" class="mr-2" checked>
+                        <label for="en-suspend">Suspend the user's account</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="en-terminate" class="mr-2" checked>
+                        <label for="en-terminate">Terminate the user's account permanently</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="en-legal" class="mr-2" checked>
+                        <label for="en-legal">Report to law enforcement</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- 5. Contact Information -->
+            <fieldset>
+                <legend>5. Reporting Violations</legend>
+                <div>
+                    <label for="contact-email">Contact Email for reporting AUP violations:</label>
+                    <input type="email" id="contact-email" placeholder="e.g., abuse@coqui.cloud or support@coqui.cloud">
+                </div>
+            </fieldset>
+
+        </form>
+
+        <div class="mt-8">
+            <button id="generate-btn" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
+                Generate Acceptable Use Policy
+            </button>
+        </div>
+
+        <div id="output-section" class="mt-10" style="display: none;">
+            <h2 class="text-2xl font-semibold mb-4">Your Generated Acceptable Use Policy</h2>
+            <div id="output-container">
+                <div id="output" contenteditable="true">
+                    <!-- Generated HTML will go here -->
+                </div>
+            </div>
+            
+            <button id="copy-btn" class="mt-4 w-full bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-800 transition duration-300">
+                Copy to Clipboard
+            </button>
+            <div id="copy-success" class="text-center mt-2 text-green-600 font-medium" style="display: none;">
+                Copied to clipboard!
+            </div>
+
+            <p class="text-sm text-center text-red-600 font-semibold mt-4">
+                <strong>Not Legal Advice</strong><br>
+                This tool generates a basic template for informational purposes only. It is <strong>NOT</strong> a substitute for professional legal advice. You are responsible for ensuring your final policy complies with all applicable laws.
+            </p>
+        </div>
+
+        <!-- Coqui Cloud Promo Block -->
+        <div class="mt-12 p-6 bg-gray-100 rounded-lg border border-gray-200">
+            <div class="flex items-center">
+                <img src="https://coqui.cloud/web/image/website/1/logo/Coqui%20Cloud?unique=5caaf69" alt="Coqui Cloud Logo" class="h-10 w-auto mr-4">
+                <div>
+                    <h3 class="font-bold text-gray-800">Need a Custom Tool Like This?</h3>
+                    <p class="text-sm text-gray-600">This free tool was built by <a href="https://coqui.cloud" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Coqui Cloud</a>. We build custom web apps, automate business processes, and specialize in Odoo.
+                    </p>
+                    <a href="https://coqui.cloud/contactus" target="_blank" rel="noopener noreferrer" class="text-sm text-blue-600 font-semibold hover:underline mt-1 inline-block">
+                        Contact Us for a Free Consultation &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const generateBtn = document.getElementById('generate-btn');
+            const copyBtn = document.getElementById('copy-btn');
+            const outputSection = document.getElementById('output-section');
+            const output = document.getElementById('output');
+            const copySuccess = document.getElementById('copy-success');
+
+            function getById(id) {
+                return document.getElementById(id);
+            }
+
+            generateBtn.addEventListener('click', () => {
+                const company = getById('company-name').value.trim() || '[Company Name]';
+                const website = getById('website-name').value.trim() || '[Website/Service Name]';
+                const url = getById('website-url').value.trim() || '[Website URL]';
+                const contactEmail = getById('contact-email').value.trim() || '[Contact Email]';
+
+                let prohibitionsList = '';
+                if (getById('act-illegal').checked) prohibitionsList += '<li>Violating any applicable local, state, national, or international law or regulation.</li>';
+                if (getById('act-spam').checked) prohibitionsList += '<li>Sending spam, chain letters, or other unsolicited commercial communications.</li>';
+                if (getById('act-harassment').checked) prohibitionsList += '<li>Harassing, threatening, stalking, or defaming any person or entity.</li>';
+                if (getById('act-hate').checked) prohibitionsList += '<li>Promoting bigotry, racism, hatred, or harm against any group or individual.</li>';
+                if (getById('act-impersonation').checked) prohibitionsList += '<li>Impersonating any person or entity, or falsely stating or misrepresenting your affiliation with a person or entity.</li>';
+                if (getById('act-malware').checked) prohibitionsList += '<li>Distributing viruses, worms, Trojan horses, or other malicious code.</li>';
+                if (getById('act-copyright').checked) prohibitionsList += '<li>Infringing on the intellectual property rights (copyrights, trademarks, patents) of others.</li>';
+                if (getById('act-reverse').checked) prohibitionsList += '<li>Reverse engineering, decompiling, or disassembling any aspect of the service.</li>';
+                if (getById('act-security').checked) prohibitionsList += '<li>Attempting to gain unauthorized access to, or disrupt the integrity or performance of, the service or its related systems.</li>';
+                if (getById('act-datamining').checked) prohibitionsList += '<li>Using any automated system, including "robots" or "spiders," to access, scrape, or data-mine the service without our prior written permission.</li>';
+
+                const otherProhibitions = getById('other-prohibitions').value.trim();
+                if (otherProhibitions) {
+                    otherProhibitions.split('\n').forEach(item => {
+                        if (item.trim()) {
+                            prohibitionsList += `<li>${item.trim()}</li>`;
+                        }
+                    });
+                }
+
+                let userContentSection = '';
+                if (getById('user-content').checked) {
+                    userContentSection = `
+                        <h3>User-Generated Content</h3>
+                        <p>If you post, upload, or otherwise make available any content on our service, you are solely responsible for that content. You agree not to post content that is illegal, harmful, or violates this AUP.</p>
+                        <p>We do not claim ownership of your content. However, you grant us a worldwide, royalty-free, non-exclusive license to use, reproduce, modify, and display your content in connection with providing the service.</p>
+                        <p>We do not screen content, but we reserve the right (though not the obligation) to monitor, edit, or remove any content that, in our sole discretion, violates this AUP or is otherwise objectionable, with or without notice.</p>
+                    `;
+                }
+
+                let enforcementList = '';
+                if (getById('en-warning').checked) enforcementList += '<li>Issuing a formal warning.</li>';
+                if (getById('en-remove').checked) enforcementList += '<li>Removing the violating content.</li>';
+                if (getById('en-suspend').checked) enforcementList += '<li>Suspending or limiting your access to the service.</li>';
+                if (getById('en-terminate').checked) enforcementList += '<li>Terminating your account permanently.</li>';
+                if (getById('en-legal').checked) enforcementList += '<li>Reporting your activity to law enforcement authorities.</li>';
+
+                let policyHTML = `
+                    <h2>Acceptable Use Policy (AUP)</h2>
+                    <p><strong>Last updated:</strong> ${new Date().toLocaleDateString()}</p>
+                    <p>This Acceptable Use Policy ("AUP") governs your use of the ${website} service (the "Service") provided by ${company}. By using the Service, you agree to abide by this AUP. Failure to comply may result in the suspension or termination of your account.</p>
+                    
+                    <h3>Prohibited Uses</h3>
+                    <p>You agree not to use the Service for any of the following prohibited activities:</p>
+                    <ul>${prohibitionsList}</ul>
+                    
+                    ${userContentSection}
+                    
+                    <h3>Enforcement</h3>
+                    <p>${company} reserves the right, but does not have the obligation, to investigate any violation of this AUP. We may, in our sole discretion, take any of the following actions:</p>
+                    <ul>${enforcementList}</ul>
+                    
+                    <h3>Reporting Violations</h3>
+                    <p>If you become aware of any violation of this AUP, please report it to us immediately.</p>
+                    <p><strong>Email:</strong> ${contactEmail}</p>
+                    
+                    <h3>Changes to This Policy</h3>
+                    <p>We may update this AUP from time to time. We will notify you of any changes by posting the new policy on this page. Your continued use of the Service after any such changes constitutes your acceptance of the new AUP.</p>
+                `;
+
+                output.innerHTML = policyHTML;
+                outputSection.style.display = 'block';
+                copySuccess.style.display = 'none';
+            });
+
+            copyBtn.addEventListener('click', () => {
+                try {
+                    const range = document.createRange();
+                    range.selectNodeContents(output);
+                    const selection = window.getSelection();
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                    
+                    // New clipboard API
+                    navigator.clipboard.writeText(output.innerText).then(() => {
+                        // Success - show feedback
+                        copySuccess.style.display = 'block';
+                        setTimeout(() => {
+                            copySuccess.style.display = 'none';
+                        }, 2000);
+                    }).catch(err => {
+                        // Fallback for older browsers
+                        document.execCommand('copy');
+                        copySuccess.style.display = 'block';
+                        setTimeout(() => {
+                            copySuccess.style.display = 'none';
+                        }, 2000);
+                    });
+
+                    selection.removeAllRanges();
+
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
